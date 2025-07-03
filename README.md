@@ -40,8 +40,8 @@ outputs, cache = tl_model.run_with_cache(
 We conduct activation patching experiments on several diagnostic datasets:
  • tfc1: tfc1_add_baseline_final_dd_append_corpus.json
  • stmc1: stmc1_add_append_final_dd_corpus.json
- • lnc1: used with experiment_lnc2.py
- • tfc2: additional variant of tfc1
+ • lnc1: used with experiment_lnc2.py (WIP)
+ • tfc2: additional variant of tfc1  (WIP)
 
 
 
@@ -49,25 +49,25 @@ We conduct activation patching experiments on several diagnostic datasets:
 
 We adapt activation patching and path patching for use with cross-encoder retrieval models.
 
-📓 Demo Notebook
- • crossencoder_demo_patching.ipynb: walkthrough of patching procedures on a cross-encoder model.
+### Demo Notebook
+crossencoder_demo_patching.ipynb: walkthrough of patching procedures on a cross-encoder model.
 
-⚙️ Helper Scripts
- • Patching_helpers.py: implements key patching routines
- • helpers.py: utilities for processing and visualization
+### Helper Scripts
+1. Patching_helpers.py: implements key patching routines
+2. helpers.py: utilities for processing and visualization
 
 
 ## Controllable IR and Downstream Experiments
- • model_editing_SVD_corr.py: replicates experiments using SVD-based vector editing
- • forbidden.py: analyzes and blocks specific token contributions
+1. model_editing_SVD_corr.py: replicates experiments using SVD-based vector editing
+2. forbidden.py: analyzes and blocks specific token contributions
 
 
 
 ## Linear Approximation Experiments
 
 (Note: Some scripts listed here are not yet uploaded)
- • paper_graphs2.py: reproduces results for Section X (WIP)
- • BM_rerank_all.py: performs BM25-style re-ranking with approximated features (WIP)
+1. paper_graphs2.py: reproduces results for Section X (WIP)
+2. BM_rerank_all.py: performs BM25-style re-ranking with approximated features (WIP)
 
 
 
