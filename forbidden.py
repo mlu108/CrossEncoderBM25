@@ -29,7 +29,7 @@ import plotly.express as px
 import plotly.io as pio
 
 
-from helpers import (
+from CrossEncoderBM25.helpers import (
     load_json_file,
     load_tokenizer_and_models,
 )
@@ -179,7 +179,7 @@ for MODE, SCALE in [('decrease', 15), ('increase', 15), ('decrease', 30), ('incr
 
     U[:, 0] = orig_U_0
     reconstructed_W_E = U @ torch.diag(S) @ Vt
-    np.save('syn_reconstructed_U_sec_high_30.npy', reconstructed_W_E.cpu().numpy())
+    np.save('embedding_U0.npy', reconstructed_W_E.cpu().numpy())
     print("Difference between original and reconstructed:", torch.norm(W_E - reconstructed_W_E))
 
     # Step 1: Add new columns to the dataframe

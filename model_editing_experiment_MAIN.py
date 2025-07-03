@@ -10,9 +10,9 @@ and see if the idf change induces the expected change in these heads' attention 
 (3) model_editing_full (commented out) is establishing the baseline that when increasing/decreasing token id's value
 in the W_E doesn't get you the expected result
 
-NOTE: how exactly is this done is through (janky right now for just experiment's sake):
+NOTE: how exactly is this done:
 we save the reconstructed W_E each time after editing some tokens' idf into a local .npy file
-np.save('syn_reconstructed_U_sec_high_30.npy', reconstructed_W_E.cpu().numpy())
+np.save('embedding_U0.npy', embedding_U0.cpu().numpy())
 
 And we edit the transformer_lens components.py Embed class to let tl_model also embeds with the
 reconstructed W_E instead of the original W_E
@@ -44,7 +44,7 @@ class Embed(nn.Module):
 
         reconstructed_W_E = U @ torch.diag(S) @ Vt
 
-        loaded_W_E = np.load('syn_reconstructed_U_sec_high_30.npy')
+        loaded_W_E = np.load('embedding_U0.npy')
         reconstructed_W_E = torch.from_numpy(loaded_W_E).to(self.cfg.device)
             
     
@@ -67,7 +67,7 @@ import plotly.express as px
 import plotly.io as pio
 random.seed(36)
 
-from helpers import (
+from CrossEncoderBM25.helpers import (
     load_json_file,
     load_tokenizer_and_models,
     get_type_pos_dict
@@ -167,7 +167,7 @@ for FIRST_TOKEN_POS, SEC_TOKEN_POS in [(0,0)]:#just for visualization code to st
 
         # Check reconstruction
         reconstructed_W_E = U @ torch.diag(S) @ Vt
-        np.save('syn_reconstructed_U_sec_high_30.npy', reconstructed_W_E.cpu().numpy())
+        np.save('embedding_U0.npy', reconstructed_W_E.cpu().numpy())
         print("Difference between original and reconstructed:", torch.norm(W_E - reconstructed_W_E))
 
 
@@ -319,7 +319,7 @@ for FIRST_TOKEN_POS, SEC_TOKEN_POS in [(0,0)]:#just for visualization code to st
                         reconstructed_W_E[token_id] =tl_model.W_E[token_id]*(-SCALE)#-5
                     else:
                         reconstructed_W_E[token_id] =tl_model.W_E[token_id]*SCALE#-5
-        np.save('syn_reconstructed_U_sec_high_30.npy', reconstructed_W_E.cpu().numpy())
+        np.save('embedding_U0.npy', reconstructed_W_E.cpu().numpy())
 
 
 

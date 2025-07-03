@@ -51,7 +51,7 @@ class Embed(nn.Module):
 
         reconstructed_W_E = U @ torch.diag(S) @ Vt
 
-        loaded_W_E = np.load('syn_reconstructed_U_sec_high_30.npy')
+        loaded_W_E = np.load('embedding_U0.npy')
         reconstructed_W_E = torch.from_numpy(loaded_W_E).to(self.cfg.device)
             
     
@@ -274,53 +274,8 @@ class TokenTypeEmbed(nn.Module):
         return outputs
 
 
-class orig_catherine_BertEmbed(nn.Module):
-    """
-    Custom embedding layer for a BERT-like model. This module computes the sum of the token, positional and token-type embeddings and takes the layer norm of the result.
-    """
 
-    def __init__(self, cfg: Union[Dict, HookedTransformerConfig]):
-        super().__init__()
-        if isinstance(cfg, Dict):
-            cfg = HookedTransformerConfig.from_dict(cfg)
-        self.cfg = cfg
-        self.embed = Embed(cfg)
-        self.pos_embed = PosEmbed(cfg)
-        # self.token_type_embed = TokenTypeEmbed(cfg) # DistilBERT doesn't use these, so comment them out
-        self.ln = LayerNorm(cfg)
-
-        self.hook_embed = HookPoint()
-        self.hook_pos_embed = HookPoint()
-        # self.hook_token_type_embed = HookPoint()
-
-    def forward(
-        self,
-        input_ids: Int[torch.Tensor, "batch pos"],
-        token_type_ids: Optional[Int[torch.Tensor, "batch pos"]] = None,
-    ):
-        base_index_id = torch.arange(input_ids.shape[1], device=input_ids.device)
-        index_ids = einops.repeat(
-            base_index_id, "pos -> batch pos", batch=input_ids.shape[0]
-        )
-        if token_type_ids is None:
-            token_type_ids = torch.zeros_like(input_ids)
-
-        word_embeddings_out = self.hook_embed(self.embed(input_ids))
-        position_embeddings_out = self.hook_pos_embed(self.pos_embed(index_ids))
-        # token_type_embeddings_out = self.hook_token_type_embed(
-        #     self.token_type_embed(token_type_ids)
-        # ) # Some issue here with DistilBERT but not major EDIT: it was major
-
-        #embeddings_out = (
-        #    word_embeddings_out + position_embeddings_out #+ token_type_embeddings_out
-        #)
-        embeddings_out = (
-            word_embeddings_out + position_embeddings_out #+ token_type_embeddings_out
-        )
-        layer_norm_out = self.ln(embeddings_out)
-        return layer_norm_out
-    
-class BertEmbed(nn.Module): #TODO: fix this block
+class BertEmbed(nn.Module): 
     """
     Custom embedding layer for a BERT-like model. This module computes the sum of the token, positional and token-type embeddings and takes the layer norm of the result.
     """
@@ -333,7 +288,7 @@ class BertEmbed(nn.Module): #TODO: fix this block
         self.embed = Embed(self.cfg)
         self.pos_embed = PosEmbed(self.cfg)
         self.token_type_embed = TokenTypeEmbed(self.cfg)
-        #JENNIFER: for debugging
+    
         self.ln = LayerNorm(self.cfg)
         #self.ln = nn.LayerNorm(cfg.d_model, eps=cfg.eps)
 
