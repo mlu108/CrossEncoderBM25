@@ -7,7 +7,7 @@ This repository contains code and experiments from our paper:
 
 ---
 
-## 🔧 TransformerLens Modifications
+##  TransformerLens Modifications
 
 This codebase is built on top of a customized version of [`TransformerLens`](https://github.com/neelnanda-io/TransformerLens), we modify some parts to perform path/activation patching in a retrieval setting for Cross-Ecndoer.
 
