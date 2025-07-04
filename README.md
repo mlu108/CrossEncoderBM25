@@ -9,16 +9,16 @@ This repository contains code and experiments from our paper:
 
 ## 🔧 TransformerLens Modifications
 
-This codebase is built on top of a customized version of [`TransformerLens`](https://github.com/neelnanda-io/TransformerLens), with additional changes to support **activation patching in a retrieval setting**.
+This codebase is built on top of a customized version of [`TransformerLens`](https://github.com/neelnanda-io/TransformerLens), we modify some parts to perform path/activation patching in a retrieval setting for Cross-Ecndoer.
 
 Modifications were made to support the retrieval model:
 
-### 🔁 Modified Files:
+### Modified Files:
 1. `load_from_pretrained.py`: sets up necessary configs  
 2. `components.py`: customized model components  
 3. `HookedEncoder.py`: supports patching and token-level caching
 
-### 🧪 Model Usage Example
+### Model Usage Example
 
 ```python
 pre_trained_model_name = "cross-encoder/ms-marco-MiniLM-L-12-v2"
@@ -35,12 +35,16 @@ outputs, cache = tl_model.run_with_cache(
 ```
 
 
-## 📚 Diagnostic Datasets
+## Diagnostic Datasets
 
 We conduct activation patching experiments on several diagnostic datasets:
+
  • tfc1: tfc1_add_baseline_final_dd_append_corpus.json
+ 
  • stmc1: stmc1_add_append_final_dd_corpus.json
+ 
  • lnc1: used with experiment_lnc2.py
+ 
  • tfc2: additional variant of tfc1
 
 
@@ -49,16 +53,20 @@ We conduct activation patching experiments on several diagnostic datasets:
 
 We adapt activation patching and path patching for use with cross-encoder retrieval models.
 
-📓 Demo Notebook
+Demo Notebook
  • crossencoder_demo_patching.ipynb: walkthrough of patching procedures on a cross-encoder model.
 
-⚙️ Helper Scripts
+Helper Scripts
+
  • Patching_helpers.py: implements key patching routines
+ 
  • helpers.py: utilities for processing and visualization
 
 
 ## Controllable IR and Downstream Experiments
+
  • model_editing_SVD_corr.py: replicates experiments using SVD-based vector editing
+ 
  • forbidden.py: analyzes and blocks specific token contributions
 
 
@@ -66,8 +74,11 @@ We adapt activation patching and path patching for use with cross-encoder retrie
 ## Linear Approximation Experiments
 
 (Note: Some scripts listed here are not yet uploaded)
+
  • paper_graphs2.py: reproduces results for Section X (WIP)
+ 
  • BM_rerank_all.py: performs BM25-style re-ranking with approximated features (WIP)
+ 
 
 
 
