@@ -32,7 +32,7 @@ outputs, cache = tl_model.run_with_cache(
 ```
 
 
-## Activation & Path Patching (IR Model)
+## Activation & Path Patching
 
 We adapt activation patching and path patching for use with cross-encoder retrieval models.
 
