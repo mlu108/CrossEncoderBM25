@@ -37,27 +37,35 @@ outputs, cache = tl_model.run_with_cache(
 We adapt activation patching and path patching for use with cross-encoder retrieval models.
 
 Demo Notebook (Section 4)
- • crossencoder_demo_patching.ipynb: walkthrough of patching procedures on a cross-encoder model.
+
+ • ```crossencoder_demo_patching.ipynb```: walkthrough of patching procedures on a cross-encoder model.
 
 Helper Scripts
- • patching_helpers.py: implements key patching routines
- • helpers.py: utilities for processing and visualization
+
+ • ```patching_helpers.py```: implements key patching routines
+
+ • ```helpers.py```: utilities for processing and visualization
  
 Diagnostic Datasets (Table 1)
- • load_diagnostic_datasets.py: functions to load four diagnostic datasets (TFC1, STMC1, LNC2, TFC2) in appropriate format.
+
+ • ```load_diagnostic_datasets.py```: functions to load four diagnostic datasets (TFC1, STMC1, LNC2, TFC2) in appropriate format.
 
 
 ## Controllable IR and Downstream Experiments
- • model_editing_SVD_corr.py: replicates experiments using SVD-based vector editing
- • forbidden.py: analyzes and blocks specific token contributions
+
+ • ```model_editing_SVD_corr.py```: replicates experiments using SVD-based vector editing
+
+ • ```forbidden.py```: analyzes and blocks specific token contributions
 
 
 
 ## Linear Approximation Experiments
 
 (Note: Some scripts listed here are not yet uploaded)
- • paper_graphs2.py: reproduces results for Section X (WIP)
- • BM_rerank_all.py: performs BM25-style re-ranking with approximated features (WIP)
+
+ • ```paper_graphs2.py```: reproduces results for Section X (WIP)
+
+ • ```BM_rerank_all.py```: performs BM25-style re-ranking with approximated features (WIP)
 
 
 
