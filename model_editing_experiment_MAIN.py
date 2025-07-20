@@ -67,7 +67,7 @@ import plotly.express as px
 import plotly.io as pio
 random.seed(36)
 
-from CrossEncoderBM25.helpers import (
+from helpers import (
     load_json_file,
     load_tokenizer_and_models,
     get_type_pos_dict
@@ -120,9 +120,7 @@ import itertools
 for FIRST_TOKEN_POS, SEC_TOKEN_POS in [(0,0)]:#just for visualization code to stay the same so keeping the same data folder structure
 #FIRST_TOKEN_POS, SEC_TOKEN_POS = 1,4
     modes = ['increase','decrease']#['increase','decrease']
-    scales = [300,400,500,180,250]#[1,3,5,8,10,15,25]#[1,5,10,15,20,30]#[x for x in range(1, 50) if x not in {1, 2, 3, 5, 8, 10, 20, 30, 50}]
-    #scales = [80,90,100,120,140,160,200]
-
+    scales = [x for x in range(1, 50)]
     #MODEL_EDITING_SVD
     for MODE, SCALE in itertools.product(modes, scales):
         print((MODE, SCALE))
@@ -240,7 +238,6 @@ for FIRST_TOKEN_POS, SEC_TOKEN_POS in [(0,0)]:#just for visualization code to st
                             names_list.append(utils.get_act_name('pattern',layer))
                         act = get_activations(tl_model, tokenized_pair_perturbed,names_list)#[:,head,:,:] 
                                 
-                        #TODO EDIT: what we are interested is attention on the selected query token!!!
                         for layer_head_index,(layer, head) in enumerate(layer_head_list):
                             name_in_namelist = utils.get_act_name('pattern',layer)
                             pattern = act[name_in_namelist][0,head,:,:].cpu().numpy()#batch=0, head -> [seqQ, seqK]#

@@ -53,9 +53,9 @@ Diagnostic Datasets (Table 1)
 
 ## Controllable IR and Downstream Experiments
 
- • ```model_editing_SVD_corr.py```: replicates experiments using SVD-based vector editing
+ • ```model_editing_experiment_MAIN.py```: Replicates experiments in Section 4.4 IDF in the Embedding Matrix, Causal Experiment.
 
- • ```forbidden.py```: analyzes and blocks specific token contributions
+ • ```forbidden.py```: Replicates Experiments in Controllable IR and Appendix F.1 Mitigating Adversarial Attacks. We construct a datasets of unsafe words using LDNOOBW and use model-editing method proposed in Section 4.4 erase” the effect of the dangerous token by reducing its importance.
 
 
 
@@ -63,10 +63,36 @@ Diagnostic Datasets (Table 1)
 
 (Note: Some scripts listed here are not yet uploaded)
 
- • ```paper_graphs2.py```: reproduces results for Section X (WIP)
+ • ```linear_approximation_BM25.py```: reproduces results for Section 5 "Validation of BM25-like Computation", which we formally validate that Relevance Scoring Heads combine soft-TF and IDF in a BM25 manner to compute the final relevance score.
 
- • ```BM_rerank_all.py```: performs BM25-style re-ranking with approximated features (WIP)
+ • ```linear_approximation_beir.py```: Reproduces experiments in Section 5.2 Appendix E for testing the linear model’s generalizability to unseen BeIR datasets and varying query lengths.
+
+579 (details in Appendix §E)
+
+BeIR Datasets Download requirements:
+
+```
+dataset = "scifact"
+url = f"https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/{dataset}.zip"
+out_dir = "beir_datasets"
+os.makedirs(out_dir, exist_ok=True)
+data_path = util.download_and_unzip(url, out_dir)
+```
+
+Additional Details for BeIR: https://github.com/beir-cellar/beir
 
 
 
-## Citation
+## How to Cite Us
+
+```
+@misc{lu2025crossencoderrediscoverssemanticvariant,
+      title={Cross-Encoder Rediscovers a Semantic Variant of BM25}, 
+      author={Meng Lu and Catherine Chen and Carsten Eickhoff},
+      year={2025},
+      eprint={2502.04645},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/2502.04645}, 
+}
+```
