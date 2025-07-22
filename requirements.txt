@@ -5,11 +5,12 @@ einops==0.8.1
 fancy_einsum==0.0.3
 huggingface_hub==0.25.0
 jaxtyping==0.3.2
-matplotlib==3.7.3
-numpy==2.2.0          # last minor before 2.3 break [1]
+numpy==1.26.4
+matplotlib==3.8.4        # optional: bump to latest 3.8 bug-fix
+scikit_learn==1.5.0rc1   # newest wheel that still supports NumPy<2
 pandas==2.2.2         # newest that accepts numpy 2.2
 scipy==1.12.0         # first wheel built for py3.10 arm
-scikit_learn==1.3.2   # matches scipy 1.12
+transformer-lens==2.16.1
 seaborn==0.13.2
 sentence_transformers==2.4.0
 Sphinx==5.0.2

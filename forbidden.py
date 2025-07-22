@@ -29,7 +29,7 @@ import plotly.express as px
 import plotly.io as pio
 
 
-from CrossEncoderBM25.helpers import (
+from helpers import (
     load_json_file,
     load_tokenizer_and_models,
 )

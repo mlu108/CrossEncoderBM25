@@ -7,6 +7,27 @@ This repository contains code and experiments from our paper:
 
 ---
 
+## Table of Contents
+- [Required Packages](#required-packages)
+- [TransformerLens Modifications](#transformerlens-modifications)
+  - [Modified Files](#modified-files)
+  - [Model Usage Example](#model-usage-example)
+- [Activation & Path Patching](#activation--path-patching)
+  - [Demo Notebook](#demo-notebook-section-4)
+  - [Helper Scripts](#helper-scripts)
+  - [Diagnostic Datasets](#diagnostic-datasets-table-1)
+- [Controllable IR and Downstream Experiments](#controllable-ir-and-downstream-experiments)
+- [Linear Approximation Experiments](#linear-approximation-experiments)
+- [How to Cite Us](#how-to-cite-us)
+
+---
+
+---
+
+## Required Packages
+
+Run ```pip install -r requirements.txt``` to install required packages for conducting following experiments.
+
 ## TransformerLens Modifications
 
 This codebase is built on top of a customized version of [`TransformerLens`](https://github.com/neelnanda-io/TransformerLens), with additional changes to support **activation patching in a retrieval setting**.
@@ -57,6 +78,8 @@ Diagnostic Datasets (Table 1)
 
  • ```forbidden.py```: Replicates Experiments in Controllable IR and Appendix F.1 Mitigating Adversarial Attacks. We construct a datasets of unsafe words using LDNOOBW and use model-editing method proposed in Section 4.4 erase” the effect of the dangerous token by reducing its importance.
 
+ • ```model_editing_finetune_miniLM.ipynb```: Replicates Experiments in Controllable IR and Appendix F.2 Parameter Efficient Fine-Tuning.
+
 
 
 ## Linear Approximation Experiments
@@ -66,8 +89,6 @@ Diagnostic Datasets (Table 1)
  • ```linear_approximation_BM25.py```: reproduces results for Section 5 "Validation of BM25-like Computation", which we formally validate that Relevance Scoring Heads combine soft-TF and IDF in a BM25 manner to compute the final relevance score.
 
  • ```linear_approximation_beir.py```: Reproduces experiments in Section 5.2 Appendix E for testing the linear model’s generalizability to unseen BeIR datasets and varying query lengths.
-
-579 (details in Appendix §E)
 
 BeIR Datasets Download requirements:
 
