@@ -3,7 +3,7 @@
 **Authors:** Meng Lu, Catherine Chen, Carsten Eickhoff
 
 This repository contains code and experiments from our paper:  
-**"Cross-Encoder Rediscovers a Semantic-Variant of BM25"**
+[**Cross-Encoder Rediscovers a Semantic-Variant of BM25**](https://arxiv.org/abs/2502.04645)
 
 ---
 
@@ -86,11 +86,11 @@ Diagnostic Datasets (Table 1)
 
 (Note: Some scripts listed here are not yet uploaded)
 
- • ```linear_approximation_BM25.py```: reproduces results for Section 5 "Validation of BM25-like Computation", which we formally validate that Relevance Scoring Heads combine soft-TF and IDF in a BM25 manner to compute the final relevance score.
+ • ```linear_approximation_BM25.ipynb```: reproduces results for Section 5 "Validation of BM25-like Computation", which we formally validate that Relevance Scoring Heads combine soft-TF and IDF in a BM25 manner to compute the final relevance score.
 
  • ```linear_approximation_beir.py```: Reproduces experiments in Section 5.2 Appendix E for testing the linear model’s generalizability to unseen BeIR datasets and varying query lengths.
 
-BeIR Datasets Download requirements:
+Note: Before running the experiment, you need to download the BeIR Datasets:
 
 ```
 dataset = "scifact"
