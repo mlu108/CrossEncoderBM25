@@ -11,11 +11,6 @@ This repository contains code and experiments from our paper:
 
 ---
 
-
-
-![Main Figure](main_figure_crossencoder.png)
----
-
 ## Table of Contents
 - [Required Packages](#required-packages)
 - [TransformerLens Modifications](#transformerlens-modifications)
