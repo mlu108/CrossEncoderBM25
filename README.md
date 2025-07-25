@@ -4,7 +4,7 @@
 
 This repository contains code and experiments from our paper:  
 [**Cross-Encoder Rediscovers a Semantic-Variant of BM25**](https://arxiv.org/abs/2502.04645)
-![Main Figure](main_figure_v2.pdf)
+![Main Figure](main_figure_crossencoder.png)
 ---
 
 ## Table of Contents
@@ -22,7 +22,7 @@ This repository contains code and experiments from our paper:
 
 ---
 
----
+
 
 ## Required Packages
 
